@@ -1,6 +1,8 @@
 # Simple Auto Read
 
 简化版自动阅读脚本，支持多个网站的自动阅读和点赞功能。
+
+
 <img width="323" height="390" alt="image" src="https://github.com/user-attachments/assets/fd03b82c-6835-48c1-ae11-2fe4e033a822" />
 
 
