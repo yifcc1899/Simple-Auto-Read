@@ -41,7 +41,7 @@
     };
     
     // 获取当前BASE_URL
-    const possibleBaseURLs = ["https://www.nodeloc.com", "https://linux.do", "https://mjjbox.com"];
+    const possibleBaseURLs = ["https://www.nodeloc.com", "https://linux.do"];
     const currentURL = window.location.href;
     let BASE_URL = possibleBaseURLs.find(url => currentURL.startsWith(url)) || possibleBaseURLs[0];
 
