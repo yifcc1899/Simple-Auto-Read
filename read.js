@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Simple Auto Read
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
-// @description  简化版自动阅读脚本,模拟真实阅读
+// @version      1.0.1
+// @description  简化版自动阅读脚本
 // @match        https://www.nodeloc.com/*
 // @match        https://linux.do/*
 // @grant        GM_addStyle
@@ -41,7 +41,7 @@
     };
     
     // 获取当前BASE_URL
-    const possibleBaseURLs = ["https://www.nodeloc.com", "https://linux.do"];
+    const possibleBaseURLs = ["https://www.nodeloc.com", "https://linux.do", "https://mjjbox.com"];
     const currentURL = window.location.href;
     let BASE_URL = possibleBaseURLs.find(url => currentURL.startsWith(url)) || possibleBaseURLs[0];
 
@@ -520,12 +520,16 @@
             
             if (topicList.length === 0) {
                 updateStatus('正在获取最新文章列表...');
+                // 重置latestPage为0，确保每次都从最新页面开始拉取
+                GM_setValue(prefix("latestPage"), 0);
                 await getLatestTopic();
                 topicList = JSON.parse(GM_getValue(prefix("topicList")) || "[]");
                 
                 if (topicList.length === 0) {
-                    updateStatus('没有可用的新文章');
-                    return false;
+                    updateStatus('正在拉取最新文章...');
+                    // 直接跳转到最新文章页面
+                    window.location.href = `${BASE_URL}/latest`;
+                    return true;
                 }
             }
             
