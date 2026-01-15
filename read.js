@@ -5,7 +5,6 @@
 // @description  简化版自动阅读脚本
 // @match        https://www.nodeloc.com/*
 // @match        https://linux.do/*
-// @match        https://mjjbox.com/*
 // @grant        GM_addStyle
 // @grant        GM_getValue
 // @grant        GM_setValue
@@ -18,7 +17,7 @@
 
     // 站点独立存储
     const host = location.hostname;
-    const siteMap = { 'www.nodeloc.com': 'nodeloc', 'linux.do': 'linuxdo', 'mjjbox.com': 'mjjbox' };
+    const siteMap = { 'www.nodeloc.com': 'nodeloc', 'linux.do': 'linuxdo' };
     const siteKey = siteMap[host] || 'nodeloc';
     const prefix = k => `${siteKey}_${k}`;
 
